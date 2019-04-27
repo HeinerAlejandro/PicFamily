@@ -5,8 +5,8 @@ from rest_framework import status
 from .serializers import MessageSerializer
 from .bot.ChatBot import ChatBot
 from .models import Message
-# Create your views here.
 
+# Create your views here.
 
 class ResponseBotView(APIView):
 
@@ -26,7 +26,9 @@ class ResponseBotView(APIView):
                 return Response(serializer.data, status = status.HTTP_200_OK)
 
         response = "¿No te entiendo, ¿puedes formular mejor tu pregunta?"
+
         data = Message(message = response)
+
         serializer = MessageSerializer(data)
 
         return Response(serializer.data, status = status.HTTP_200_OK)

@@ -25,7 +25,7 @@ SECRET_KEY = '&(z9f=nw&y*-hx&f_#$xtq36=67l)j&zdq-rdpruoso%2h2dec'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.101', '127.0.0.1', 'localhost', 'www.picfamily.com']
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'authentication',
     'chatBot',
     'corsheaders', 
+    'places'
 ]
 
 ACCOUNT_AUTHENTICATION_METHOD ='email'
