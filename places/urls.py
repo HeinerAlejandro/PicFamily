@@ -1,6 +1,12 @@
 from django.urls import path
-from .views import PlacesView
+from django.urls import include
+from .views import PlaceViewSet
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+
+router.register(r'places', PlaceViewSet)
 
 urlpatterns = [
-    path("places", PlacesView.as_view(), name = 'places')
+    path('', include(router.urls))
 ]

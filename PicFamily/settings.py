@@ -168,3 +168,4 @@ WEBPACK_LOADER = {
     }
 }
 
+USERNAME_REQUIRED = True
