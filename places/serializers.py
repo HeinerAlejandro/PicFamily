@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Place
+from .models import Place, Reservation
 
 class PlaceSerializer(serializers.ModelSerializer):
 
@@ -13,3 +13,10 @@ class PlaceSerializer(serializers.ModelSerializer):
             'rating',
             'posts'
         )
+
+class ReservationSerializer(serializers.ModelSerializer):
+
+    class Meta:
+
+        model = Reservation
+        fields = '__all__'

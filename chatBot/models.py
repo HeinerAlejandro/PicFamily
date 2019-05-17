@@ -34,17 +34,23 @@ class WordsRegex(models.Model):
     def removeword(self, regexword):
         self.wRegex = self.wRegex.replace('|'+ regexword, '')
 
-#supercalifragilisticoespialidoso tiene 32 caracteres
-    
+    class Meta:
+        verbose_name = 'Palabra'
+        verbose_name_plural = 'Palabras'
 
+#supercalifragilisticoespialidoso tiene 32 caracteres
 # Respuesta
 class Reply(models.Model):
 
-    replyRegex = models.CharField(verbose_name = 'Expresion regular de la respuesta' ,max_length=150, primary_key=True )
-    replyText = models.CharField(verbose_name = 'Texto de la respuesta',max_length=150 )
+    replyRegex = models.TextField(verbose_name = 'Expresion regular de la respuesta', primary_key=True)
+    replyText = models.TextField(verbose_name = 'Texto de la respuesta')
 
     def __str__(self):
         return self.replyText
 
     def setReplyText(self, newText):
         self.replyText = newText
+
+    class Meta:
+        verbose_name = 'Regex Respuesta'
+        verbose_name_plural = 'Regexs Respuestas'

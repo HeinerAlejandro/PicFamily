@@ -21,7 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('jet/', include('jet.urls')), 
-    path(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name = 'application.html'), name = 'index'),
     path('', include('products.urls')),
