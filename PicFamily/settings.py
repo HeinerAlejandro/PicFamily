@@ -173,3 +173,5 @@ WEBPACK_LOADER = {
 }
 
 USERNAME_REQUIRED = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_EMAIL_VERIFICATION = 'none'

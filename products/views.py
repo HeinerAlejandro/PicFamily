@@ -54,7 +54,7 @@ class OrderViewSet(ModelViewSet):
             for product in products:
                 self.getObjectProductFromData(product, Order)
 
-            return Response(status = status.HTTP_200_OK)
+            return Response("Operacion realizada con exito", status = status.HTTP_200_OK)
         
-        return Response(status = status.HTTP_400_BAD_REQUEST)
+        return Response("Operacion fallida, intente mas tarde", status = status.HTTP_400_BAD_REQUEST)
             
