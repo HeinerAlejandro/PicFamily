@@ -27,7 +27,8 @@ urlpatterns = [
     path('', include('products.urls')),
     path('', include('authentication.urls')),
     path('', include('chatBot.urls')),
-    path('', include('places.urls'))
+    path('', include('places.urls')),
+    path('api-auth/', include('rest_framework.urls', namespace = 'rest_framework'))
 ]
 
 if settings.DEBUG == True:

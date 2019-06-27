@@ -75,9 +75,9 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK  = { 
     'DEFAULT_AUTHENTICATION_CLASSES' : ( 
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-           # django-oauth- kit de herramientas> = 1.0.0
+        'rest_framework.authentication.BasicAuthentication',  
     ), 
 }
 AUTHENTICATION_BACKENDS = (
@@ -175,3 +175,7 @@ WEBPACK_LOADER = {
 USERNAME_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER' : 'authentication.serializers.CustomRegisterSerializer'
+}

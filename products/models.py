@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.safestring import mark_safe
 
 user = get_user_model()
 
@@ -45,13 +46,36 @@ class OperationBuy(models.Model):
 
     class Meta:
         verbose_name = 'Operacion de venta'
-        verbose_name_plural = 'Lugares'
+        verbose_name_plural = 'Operaciones de venta'
 
 class order(models.Model):
 
-    user = models.ForeignKey(user, verbose_name = "Orden", on_delete = models.CASCADE, unique = False)
+    user = models.ForeignKey(user, verbose_name = "Usuario", on_delete = models.CASCADE, unique = False)
     TotalPrice = models.DecimalField(verbose_name = 'Precio', max_digits = 20, decimal_places = 2)
     date = models.DateTimeField(verbose_name = '', auto_now_add = True)
+
+    def getListProducts(self):
+        operations = self.operationbuy_set.all()
+       
+        return operations
+
+    def getOptionComponentsToProducts(self):
+
+        operations = self.getListProducts()
+
+        options = ['<option value = {}>{}</option>'.format(
+            operation.product.title,
+            operation.product.title + ' x{}'.format(operation.q)) for operation in operations]
+     
+        return options
+
+    def getSelectComponenetToProducts(self):
+
+        options = self.getOptionComponentsToProducts()
+
+        return mark_safe("<select>{}</select>".format(options))
+        
+    getSelectComponenetToProducts.short_description = 'Productos'
 
     def __str__(self):
         return '{}'.format(self.pk)
