@@ -31,9 +31,9 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace = 'rest_framework'))
 ]
 
-if settings.DEBUG == True:
 
-	from django.conf.urls.static import static
 
-	urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+from django.conf.urls.static import static
+
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
